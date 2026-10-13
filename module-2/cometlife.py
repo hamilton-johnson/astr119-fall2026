@@ -21,3 +21,15 @@ dr = dM / (4 * pi * rho * R**2)                                          # m of 
 
 print("dr =", dr, "m per orbit")
 print("orbits left =", R / dr)
+
+# TODO(human): compute the comet's lifetime with Kepler's third law
+#   1. P = the orbital period in years, using P = a**1.5 (careful: a must be in AU here)
+#   2. lifetime = how many years the comet lasts (orbits left times the period)
+#   3. death_year = the year the comet runs out of ice, starting from 2026
+
+P = AU ** 1.5
+lifetime = P * (R / dr)
+death_year = 2026 + lifetime
+print(f"period = {P:.2f} years")
+print(f"the comet lasts about {lifetime:.0f} years and dies around the year {death_year:.0f}")
+print(f"Mark your calendar for {death_year:.0f}: bring snacks, the comet won't.")
