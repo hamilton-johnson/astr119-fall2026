@@ -11,7 +11,7 @@ AU = 1.49e11        # meters per AU
 
 R = float(sys.argv[1])         # comet radius, m (2 km)
 rho = 500.0         # comet density, kg/m^3
-A = 0.0             # albedo
+A = float(sys.argv[2])   # albedo, read from the command line (second argument)
 a = 3.12 * AU       # semi-major axis, m
 e = 0.5             # eccentricity
 
