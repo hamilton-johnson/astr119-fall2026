@@ -2,10 +2,10 @@
 count = 0
 
 
-def bump():
-    count = count + 1
+def bump(count):
+    return count + 1
 
 
 
-bump()
+count = bump(count)
 print(count)
