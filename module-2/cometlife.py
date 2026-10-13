@@ -27,7 +27,7 @@ print("orbits left =", R / dr)
 #   2. lifetime = how many years the comet lasts (orbits left times the period)
 #   3. death_year = the year the comet runs out of ice, starting from 2026
 
-P = AU ** 1.5
+P = (a / AU) ** 1.5
 lifetime = P * (R / dr)
 death_year = 2026 + lifetime
 print(f"period = {P:.2f} years")
