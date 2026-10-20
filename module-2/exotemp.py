@@ -1,4 +1,3 @@
-import scipy
 from scipy.constants import sigma  # Stefan-Boltzmann constant, W m^-2 K^-4
 import numpy as np
 
