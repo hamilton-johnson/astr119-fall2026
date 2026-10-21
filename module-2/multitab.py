@@ -21,7 +21,15 @@ def multitab(n):
     ### USE A FOR LOOP OR WHILE LOOP, WHICHEVER YOU LIKE
     ### YOU WILL PROBABLY NEED TO LOOK UP SOME THINGS
     ### YOU WILL DISCOVER A USEFUL OPTIONAL PARAMETER TO THE FUNCTION PRINT()
-
+    print(" ", end = " ") # align the first row
+    for i in range(1, n + 1): # for loop that prints 1 through n for row
+        print(f"\033[4m{i}\033[0m", end = " ") # using the underline property of print function
+    print("\n") # starting new line for actual table
+    for i in range(1, n + 1):
+        print(f"\033[4m{i}\033[0m", end = " ") # print the column indicators 1 through n underlined
+        for k in range(1, n + 1):
+            print(i * k, end = " ") # print the products on same line with space
+        print("\n") # start new line afterwards
     return None
 
 ### To run as a utility
