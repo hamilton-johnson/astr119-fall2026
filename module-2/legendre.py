@@ -32,6 +32,19 @@ def legpoly(n,x):
     ### USE AS MANY LINES AS YOU NEED
     ### USE A FOR LOOP OR WHILE LOOP, WHICHEVER YOU LIKE
     y = None
+
+    if n == 0:
+        return float(1)
+    if n == 1:
+        return x
+    
+    P_n_minus_one = 1
+    P_n = x
+    for i in range(n-1):
+        P_n_plus_one = (((2*i + 1)*x*P_n) - (i*P_n_minus_one)) / (i + 1)
+        P_n_minus_one = P_n
+        P_n = P_n_plus_one
+    y = P_n_plus_one
     ###
 
     return y
