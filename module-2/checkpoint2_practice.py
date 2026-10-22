@@ -59,9 +59,9 @@ def mean_temp(temps):
     for temp in temps:
         total = total + temp
     return total / len(temps)
-    pass
+    
 
-planet_temps = [440, 737, 288, 210]   # K: Mercury, Venus, Earth, Mars (mean surface)
+planet_temps = []   # K: Mercury, Venus, Earth, Mars (mean surface)
 print("mean temp:", mean_temp(planet_temps))
 # My prediction (work it out by hand first):
 # 418.75
