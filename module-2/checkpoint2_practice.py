@@ -43,3 +43,21 @@ mars = au_to_km(1.52)
 print("Mars distance:", mars)
 # What does the last line actually print? Which line is the bug, and what's the fix?
 # last line prints mars distance: none, change print to return in the function
+
+# --- Problem 5: write the function -------------------------------------------
+def mean_temp(temps):
+    """Return the average of a list of temperatures (in K).
+
+    Use a for loop -- no sum() or numpy -- the way you would on paper.
+    """
+    # TODO(human):
+    #   1. start a running total at 0
+    #   2. loop over temps, adding each one to the total
+    #   3. divide the total by how many temperatures there are
+    #   4. return the result (return, not print!)
+    pass
+
+planet_temps = [440, 737, 288, 210]   # K: Mercury, Venus, Earth, Mars (mean surface)
+print("mean temp:", mean_temp(planet_temps))
+# My prediction (work it out by hand first):
+#
