@@ -37,9 +37,9 @@ print("biggest:", biggest)
 def au_to_km(d_au):
     """Convert a distance in astronomical units to kilometres."""
     km = d_au * 1.496e8
-    return(km)
+    print(km)
 
 mars = au_to_km(1.52)
 print("Mars distance:", mars)
 # What does the last line actually print? Which line is the bug, and what's the fix?
-# last line prints nothing, change print to return in the function
+# last line prints mars distance: none, change print to return in the function
