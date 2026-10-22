@@ -55,9 +55,13 @@ def mean_temp(temps):
     #   2. loop over temps, adding each one to the total
     #   3. divide the total by how many temperatures there are
     #   4. return the result (return, not print!)
+    total = 0
+    for temp in temps:
+        total = total + temp
+    return total / len(temps)
     pass
 
 planet_temps = [440, 737, 288, 210]   # K: Mercury, Venus, Earth, Mars (mean surface)
 print("mean temp:", mean_temp(planet_temps))
 # My prediction (work it out by hand first):
-#
+# 418.75
