@@ -33,18 +33,18 @@ def legpoly(n,x):
     ### USE A FOR LOOP OR WHILE LOOP, WHICHEVER YOU LIKE
     y = None
 
-    if n == 0:
+    if n == 0: # returning first two cases of 1
         return float(1)
     if n == 1:
         return x
     
-    P_n_minus_one = 1
+    P_n_minus_one = 1 # assigning initials for recursion 
     P_n = x
     for i in range(1, n):
-        P_n_plus_one = (((2*i + 1)*x*P_n) - (i*P_n_minus_one)) / (i + 1)
-        P_n_minus_one = P_n
+        P_n_plus_one = (((2*i + 1)*x*P_n) - (i*P_n_minus_one)) / (i + 1) # the calculation for next legpoly with x and n
+        P_n_minus_one = P_n # reassigning by bumping n by +1
         P_n = P_n_plus_one
-    y = P_n_plus_one
+    y = P_n_plus_one # setting y, the return variable, to the correct polynomial
     ###
 
     return y

@@ -1,0 +1,20 @@
+Hamilton Johnson
+Astr 119
+HW2
+
+Prediction for 1.3, legpoly(2, 0.5) - P_2(0.5) = -0.125 - correct
+
+First question to the agent (I wrote an attempt at the loop, and it didn’t work): I implemented a for loop to calculate the n+1 Legendre polynomial using the recursive property: (n + 1)P_{n+1}(x) = (2n + 1)xP_n(x) - nP_{n-1}(x). It is used in the function legpoly with n and x. Explain what I did wrong.
+Explained: Claude told me I was indexing wrong basically. I had range(n) which counts 0, 1, 2, not 1, 2 like I expected it to if n = 3. I’m used to coding in R so that is confusing to me. I changed it to range(1, n) so that the loop runs n-1 times (I didn’t let claude edit the code because I wanted to do it).
+Predict: I predict that the tests will work now that I fixed the index issue, I also believe that the first two legpoly returns for n = 0 and n= 1 will still be correct because I return those as base cases before the loop. Clause asked me what legpoly(3, 0.5) will return, I think it will be about -0.4. 
+Why question (line 47): after the loop, P_n and P_n_plus_one hold the same value. Why? And if you wrote y = P_n instead, which input n would that version handle that your current line 47 wouldn't, if the early return for n == 1 weren't there? P_n and P_n_plus_one hold the same value because for the next iteration of the loop we push n over one, that is the recursive property being implemented here. If I wrote y = P_n the loop would still return the correct value but I don’t like that. However, I do believe that claude is doing something smart here because it might allow me to remove the two earlier conditionals to filter out n == 0 and n == 1. I’ll try. - It works for n == 1 but not n == 0 which makes sense. I will keep my solution.
+
+Problem 2 multilab.py
+
+First question to the agent: how do I make text underlined in the print function?
+Explained: Claude told me to use some super ugly sequence of characters and numbers to make it work, but only in the terminal. I implemented this to add underlined row and column n numbers to make it look more like a table and show the pairwise integers being multiplied.
+Predict: I implemented the change myself without claude touching my code and I predict that my table will come out with underline row and column 1 through 4 integers and the table contained within will be the correct multiplication table of n. 
+Why questions: print("\033[4m1.0\033[0m and 2.0")
+Which part is underlined, and why not the rest? The first number 1.0 is underlined and the rest is not because the ugly characters \033[0m closes the underline before “and 2.0.”
+Git Fork: https://github.com/hamilton-johnson/astr119-fall2026/tree/main
+
