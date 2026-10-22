@@ -32,6 +32,7 @@ print(T)
 hot = T > 1000
 print(hot)
 print(names[hot])
+
 if __name__ == "__main__":
     # Last week's way: one planet at a time.
     for i in range(len(name)):
