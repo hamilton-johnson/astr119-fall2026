@@ -16,7 +16,7 @@ H[698:, :, : ] = 1
 H[:, 684:, : ] = 1
 imsave("creative.png", H)
 F = H.copy()
-F[:, :, 2] = 1 - F[:, :, 0]
+F[:, :, 1] = 1 - F[:, :, 1]
 
 
 imsave("creative_2.png", F)
