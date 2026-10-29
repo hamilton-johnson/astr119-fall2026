@@ -19,17 +19,24 @@ def t_eq(L, d):
 
 
 if __name__ == "__main__":
+    I = plt.imread("module-4/clean_io_small.png")
     T = t_eq(lum * L_SUN, dist * AU)
     fig, ax = plt.subplots()
+    fig1, ax_hist = plt.subplots()
     ax.scatter(dist, T)
     ax.set_xlabel("Distance (AU)")
     ax.set_ylabel("Equilibrium Temperature (K)")
     d = np.linspace(0.01, 2.0, 200)
     T_curve = t_eq(L_SUN, d * AU)
-    ax.plot(d, T_curve)
+    T_half_curve = t_eq(L_SUN / 2, d * AU)
+    ax.plot(d, T_curve, label = "Sun's Luminosity")
+    ax.plot(d, T_half_curve, label = "Half of Sun's Luminosity")
+    ax.legend()
     ax.set_xscale("log")
     ax.set_yscale("log")
     for n, x, y in zip(name, dist, T): 
         ax.annotate(n, (x, y), fontsize=7)
     fig.savefig("module-4/planets.png", dpi=150)
+    ax_hist.hist(I[:, :, 0].ravel(),bins=50)
+    fig1.savefig("module-4/hist.png", dpi = 150)
     print("wrote module-4/planets.png")
