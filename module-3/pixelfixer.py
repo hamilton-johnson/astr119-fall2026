@@ -39,8 +39,20 @@ def pixelfix(I):
     print(f"There are {bad_pixels.sum()} bad pixels")
     # set all the bad pixel color values to 1, which makes them white
     Iq[bad_pixels] = 1
-    
 
+    # TODO(human): stage 3 -- replace each bad pixel with the average of its
+    # up/down/left/right neighbors.
+    #   1. Get the row and column indices of the bad pixels: np.where(bad_pixels)
+    #   2. Loop over the (row, col) pairs.
+    #   3. Grab the 4 neighbor colors: (r-1, c), (r+1, c), (r, c-1), (r, c+1).
+    #      Decide: read them from I or from Iq? What if a neighbor is also bad?
+    #   4. Average those 4 RGB values and store the result in Iq[r, c].
+    #   5. (Think) What happens at r = 0 or c = N-1? Do any bad pixels sit there?
+    rows, cols = np.where(bad_pixels)
+    for r, c in zip(rows, cols):
+        color_channels_average = (I[r-1, c] + I[r+1, c] + I[r, c-1] + I[r, c+1]) / 4
+        Iq[r, c] = color_channels_average
+        
     return Iq
 
 
