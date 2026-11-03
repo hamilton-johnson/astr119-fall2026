@@ -50,9 +50,20 @@ def pixelfix(I):
     #   5. (Think) What happens at r = 0 or c = N-1? Do any bad pixels sit there?
     rows, cols = np.where(bad_pixels)
     for r, c in zip(rows, cols):
-        color_channels_average = (I[r-1, c] + I[r+1, c] + I[r, c-1] + I[r, c+1]) / 4
+        neighbors = []
+        if (r < I.shape[0] - 1) and not (bad_pixels[r+1, c]):
+            neighbors.append(I[r+1, c]) 
+        if (r >= 1) and not (bad_pixels[r-1, c]):
+            neighbors.append(I[r-1, c])
+        if (c < I.shape[1] - 1) and not (bad_pixels[r, c+1]):
+            neighbors.append(I[r, c+1])
+        if (c >= 1) and not (bad_pixels[r, c-1]):
+            neighbors.append(I[r, c-1])
+        if len(neighbors) == 0:
+            print("no good neighbors at", r, c)
+        color_channels_average = np.mean(neighbors, axis = 0)
         Iq[r, c] = color_channels_average
-        
+
     return Iq
 
 
