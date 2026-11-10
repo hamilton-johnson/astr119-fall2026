@@ -1,0 +1,3 @@
+HW4
+
+I predict that my plot will look fairly similar to the one that was presented in the instructions for this assignment. I added my own title and caption which I believe will be shown in the plot, however, I might have to come back afterwards to fix any text wrapping or other formating. Claude asked me to predict where rings 1, 2, and 3 would sit on the plot. Using the function they would be at 1.9, 2.5, and 3 components of the inner tube. This also answers the second prediction question which was if the gabe between 1 and 2 would be larger or smaller than 2 and 3, the answer is larger, but it might be hard to tell in the image I think.

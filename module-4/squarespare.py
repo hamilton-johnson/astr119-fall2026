@@ -43,7 +43,7 @@ def product_visible(el_frac, R_new=3):
     r_0 = R_new / 3
 
     r = np.sqrt((R_new**2 - r_0**2) * el_frac + r_0**2)
-    
+
     return r
 
 def visualize_danger(n, R_new=3, saveas=''):
@@ -68,15 +68,34 @@ def visualize_danger(n, R_new=3, saveas=''):
     fh = plt.figure(figsize=(8,6)) # my favorite figure size
 
     ### YOUR CODE HERE ###
+    ax = fh.add_subplot()
+    fh.subplots_adjust(top=0.88, bottom=0.18)  # room for header and caption
 
     # Do the core plotting commands here
     ## use the functions defined above to calculate the line segments to plot
+    theta = np.linspace(0, 2 * np.pi, 400)
+    r_tube = product_visible(0, R_new)  # empty roll = bare cardboard tube
+    ax.fill(r_tube * np.cos(theta), r_tube * np.sin(theta), color='dimgray')
+    label_size = max(5, 14 - n)  # labels shrink as rings crowd together
+    for k in range(1, n + 1):
+        r_k = product_visible(k / n, R_new)  # ring k holds k/n of the roll
+        ax.plot(r_k * np.cos(theta), r_k * np.sin(theta), color='black', lw=1.2)
+        ax.text(r_k, 0, str(k), rotation=90, ha='center', va='center',
+                fontsize=label_size,
+                bbox=dict(facecolor='white', edgecolor='none', pad=1))
 
     # Set axes properties here for a better view
     ## things like axis limits and tick marks
+    lim = 1.1 * R_new
+    ax.set_xlim(-lim, lim)
+    ax.set_ylim(-lim, lim)
+    ax.set_aspect('equal')  # circles stay circles, frame stays square
 
     # Stylize and annotate
     ## things like axes labels, font sizes, or any other finishing touches
+    ax.set_xlabel('core radii', loc='left', fontsize=12)
+    ax.set_title(f'Toilet Paper Roll of {n} Equal Layers of Paper', fontsize=14)  # EDIT HERE: your header text
+    fh.text(0.5, 0.04, 'A representation of what a toilet paper roll with a center tube of 1/3 total radius looks like with n layers, spaced in such a manner that reflects the visible product.', ha='center', fontsize=10, wrap=True)  # EDIT HERE: your caption
 
     ######################
 
