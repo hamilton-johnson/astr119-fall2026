@@ -2,6 +2,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
 
 def product_remaining(r, R_new=3):
     """Fraction of product remaining by visible roll radius.
@@ -18,9 +19,9 @@ def product_remaining(r, R_new=3):
     Current remaining length as fraction of original length of new roll.
     """
 
-   
+    # r_0 is a third of R_new
     r_0 = R_new / 3
-
+    # the relationship between product_remaining based on visible radius, derived from equating volumes
     f_x = (r**2 - r_0**2) / (R_new**2 - r_0**2)
 
     return f_x 
@@ -40,8 +41,9 @@ def product_visible(el_frac, R_new=3):
     Current visible radius of roll, in units of r0, the cardboard cylinder
     radius.
     """
-    r_0 = R_new / 3
 
+    r_0 = R_new / 3
+    # the relationship between visible radius based on the fraction of remaining paper, inverse of previous function
     r = np.sqrt((R_new**2 - r_0**2) * el_frac + r_0**2)
 
     return r
@@ -91,11 +93,20 @@ def visualize_danger(n, R_new=3, saveas=''):
     ax.set_ylim(-lim, lim)
     ax.set_aspect('equal')  # circles stay circles, frame stays square
 
+    ax.xaxis.set_major_locator(MultipleLocator(1))    # labeled tick every 1
+    ax.yaxis.set_major_locator(MultipleLocator(1))
+    ax.xaxis.set_minor_locator(MultipleLocator(0.1))  # small tick every 0.1
+    ax.yaxis.set_minor_locator(MultipleLocator(0.1))
+    ax.grid(which='major', color='0.6', lw=0.8)       # medium gray
+    ax.grid(which='minor', color='0.85', lw=0.5)      # faint gray
+    ax.set_axisbelow(True)  # grid behind the tube and rings
+
     # Stylize and annotate
     ## things like axes labels, font sizes, or any other finishing touches
-    ax.set_xlabel('core radii', loc='left', fontsize=12)
+    ax.set_xlabel('Core Radii', fontsize=12)
+    ax.set_ylabel('Core Radii', fontsize=12)
     ax.set_title(f'Toilet Paper Roll of {n} Equal Layers of Paper', fontsize=14)  # EDIT HERE: your header text
-    fh.text(0.5, 0.04, 'A representation of what a toilet paper roll with a center tube of 1/3 total radius looks like with n layers, spaced in such a manner that reflects the visible product.', ha='center', fontsize=10, wrap=True)  # EDIT HERE: your caption
+    fh.text(0.5, 0.04, f'A representation of what a toilet paper roll with a center tube of 1/3 total radius looks like with {n} layers,\nspaced in such a manner that reflects the visible product.', ha='center', fontsize=10, wrap=True)  # EDIT HERE: your caption
 
     ######################
 
