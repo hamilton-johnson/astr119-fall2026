@@ -18,10 +18,11 @@ def product_remaining(r, R_new=3):
     Current remaining length as fraction of original length of new roll.
     """
 
-    x = r / R_new
+    #x = r / R_new
     r_0 = R_new / 3
-    f_x = ((R_new * x)**2 - r_0**2) / ((r / x)**2 - r_0**2)
+    #f_x = ((R_new * x)**2 - r_0**2) / ((r / x)**2 - r_0**2)
 
+    f_x = (r**2 - r_0**2) / (R_new**2 - r_0**2)
     return f_x 
 
 def product_visible(el_frac, R_new=3):
